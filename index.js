@@ -7,9 +7,9 @@ function calculate(x,y,callback) {
     }, 3000)
 }
 
- function display(result) {
-    console.log(`ผลบวก = ${result}`)
- }
+//  function display(result) {
+//     console.log(`ผลบวก = ${result}`)
+//  }
 
 //  intitil
 //  const sum = calculate(100,50)
@@ -17,4 +17,8 @@ function calculate(x,y,callback) {
 
 // callback function
 
-calculate(100,50,display)
+// calculate(100,50,display)
+
+calculate(100,50,function(result){
+    console.log(`ผลบวก = ${result}`)
+})
