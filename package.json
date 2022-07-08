@@ -1,0 +1,23 @@
+{
+  "name": "learningnodejs",
+  "version": "1.0.0",
+  "description": "this server test beginner webserver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panupng26/LearningNodejs.git"
+  },
+  "author": "bank_panupong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panupng26/LearningNodejs/issues"
+  },
+  "homepage": "https://github.com/panupng26/LearningNodejs#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}
