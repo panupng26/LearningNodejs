@@ -1,34 +1,49 @@
-const { fstat } = require('fs');
-const http = require('http')
 require('dotenv').config();
-const fs = require('fs')
-const url = require('url')
-
-// import file
-const indexpage = fs.readFileSync(`${__dirname}/templates/index.html`,'utf-8')
-const productpage1 = fs.readFileSync(`${__dirname}/templates/product1.html`,'utf-8')
-const productpage2 = fs.readFileSync(`${__dirname}/templates/product2.html`,'utf-8')
-const productpage3 = fs.readFileSync(`${__dirname}/templates/product3.html`,'utf-8')
 
 
-// server
-const server = http.createServer((req,res)=>{
+const express = require('express')
+const app = express()
+const router = express.Router()
 
-    const { pathname, query } = url.parse(req.url,true)
-    if(pathname === '/' || pathname === '/home') {
-        res.end(indexpage)
-    } else if(pathname === '/product') {
-        if(query.id === '1') {
-            res.end(productpage1)
-        }else if(query.id === '2') {
-            res.end(productpage2)
-        }else if(query.id === '3') {
-            res.end(productpage3)
-        }
-        
-    }else {
-        res.end('Not Found')
-    }
-}).listen(process.env.port,process.env.domain,()=> {
+// path
+const path = require('path')
+const indexPage = path.join(__dirname,'templates/index.html')
+
+router.get('/',(req,res)=> {
+    res.sendFile(path.join(__dirname,'templates/index.html'))
+})
+
+// router.get('/products',(req,res)=> {
+//     const data = {
+//         message: 'success fetch',
+//         success: '200',
+//         data: [
+//             {
+//                 product_id: 1,
+//                 product_name: "ฮิปโป้",
+//                 product_price: 12456,
+//             },
+//             {
+//                 product_id: 2,
+//                 product_name: "ฮิป",
+//                 product_price: 456,
+//             },
+//             {
+//                 product_id: 3,
+//                 product_name: "โยว",
+//                 product_price: 2456,
+//             }
+//         ],
+//     }
+//     res.status(200)
+//     res.send(data)
+// })
+
+router.get('/product', (req,res)=> {
+    res.sendFile(path.join(__dirname,'templates/product1.html'))
+})
+
+app.use(router)
+app.listen(process.env.port,process.env.domain,()=>{
     console.log(`start server in port: ${process.env.domain}:${process.env.port}`)
 })
