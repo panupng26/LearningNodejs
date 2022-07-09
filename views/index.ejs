@@ -8,8 +8,14 @@
 </head>
 <body>
     <h1>Hello EJS Template Engine</h1>
-      <h1>ชื่อ: <%= name %> <%= lastname %></h1>
-      <h1>อายุ: <%= age %></h1>
-      <%- address %>
+    <h1>ชื่อ: <%= name %> <%= lastname %></h1>
+    <h1>อายุ: <%= age %></h1>
+    <%- address %>
+    <hr>
+    <% if (age>=18) {%>
+        <h1 style="color: green;">ผ่านการทดสอบ</h1>
+    <% } else { %>
+        <h1 style="color: red;">ไม่ผ่านทดสอบ</h1>
+    <% } %>
 </body>
 </html>
